@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">HiitTimer</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="warm_up">Warm Up (m:s)</string>
+    <string name="rest">Rest</string>
+    <string name="cool_down">Cool Down</string>
+
+</resources>
