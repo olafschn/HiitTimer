@@ -16,13 +16,23 @@ import android.widget.TextView;
  */
 public class SetTimerActivity extends Activity {
 
+    private NumberPicker warmUpMinPicker;
+    private NumberPicker warmUpSecPicker;
+    private NumberPicker coolDownMinPicker;
+    private NumberPicker coolDownSecPicker;
+    private NumberPicker workMinPicker;
+    private NumberPicker workSecPicker;
+    private NumberPicker restMinPicker;
+    private NumberPicker restSecPicker;
+    private NumberPicker repCountPicker;
+    private TextView totalTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_timer);
 
-
-        final NumberPicker warmUpMinPicker = (NumberPicker) findViewById(R.id.warmUpMinPicker);
+        warmUpMinPicker = (NumberPicker) findViewById(R.id.warmUpMinPicker);
         warmUpMinPicker.setMaxValue(59);
         warmUpMinPicker.setMinValue(0);
         warmUpMinPicker.setValue(0);
@@ -34,7 +44,7 @@ public class SetTimerActivity extends Activity {
         });
 
 
-        final NumberPicker warmUpSecPicker = (NumberPicker) findViewById(R.id.warmUpSecPicker);
+        warmUpSecPicker = (NumberPicker) findViewById(R.id.warmUpSecPicker);
         warmUpSecPicker.setMaxValue(59);
         warmUpSecPicker.setMinValue(0);
         warmUpSecPicker.setValue(0);
@@ -45,7 +55,7 @@ public class SetTimerActivity extends Activity {
             }
         });
 
-        final NumberPicker coolDownMinPicker = (NumberPicker) findViewById(R.id.coolDownMinPicker);
+        coolDownMinPicker = (NumberPicker) findViewById(R.id.coolDownMinPicker);
         coolDownMinPicker.setMaxValue(59);
         coolDownMinPicker.setMinValue(0);
         coolDownMinPicker.setValue(0);
@@ -56,7 +66,7 @@ public class SetTimerActivity extends Activity {
             }
         });
 
-        final NumberPicker coolDownSecPicker = (NumberPicker) findViewById(R.id.coolDownSecPicker);
+        coolDownSecPicker = (NumberPicker) findViewById(R.id.coolDownSecPicker);
         coolDownSecPicker.setMaxValue(59);
         coolDownSecPicker.setMinValue(0);
         coolDownSecPicker.setValue(0);
@@ -67,7 +77,7 @@ public class SetTimerActivity extends Activity {
             }
         });
 
-        final NumberPicker workMinPicker = (NumberPicker) findViewById(R.id.workMinPicker);
+        workMinPicker = (NumberPicker) findViewById(R.id.workMinPicker);
         workMinPicker.setMaxValue(59);
         workMinPicker.setMinValue(0);
         workMinPicker.setValue(0);
@@ -78,7 +88,7 @@ public class SetTimerActivity extends Activity {
             }
         });
 
-        final NumberPicker workSecPicker = (NumberPicker) findViewById(R.id.workSecPicker);
+        workSecPicker = (NumberPicker) findViewById(R.id.workSecPicker);
         workSecPicker.setMaxValue(59);
         workSecPicker.setMinValue(0);
         workSecPicker.setValue(0);
@@ -89,7 +99,7 @@ public class SetTimerActivity extends Activity {
             }
         });
 
-        final NumberPicker restMinPicker = (NumberPicker) findViewById(R.id.restMinPicker);
+        restMinPicker = (NumberPicker) findViewById(R.id.restMinPicker);
         restMinPicker.setMaxValue(59);
         restMinPicker.setMinValue(0);
         restMinPicker.setValue(0);
@@ -100,7 +110,7 @@ public class SetTimerActivity extends Activity {
             }
         });
 
-        final NumberPicker restSecPicker = (NumberPicker) findViewById(R.id.restSecPicker);
+        restSecPicker = (NumberPicker) findViewById(R.id.restSecPicker);
         restSecPicker.setMaxValue(59);
         restSecPicker.setMinValue(0);
         restSecPicker.setValue(0);
@@ -111,7 +121,7 @@ public class SetTimerActivity extends Activity {
             }
         });
 
-        final NumberPicker repCountPicker = (NumberPicker) findViewById(R.id.repCountPicker);
+        repCountPicker = (NumberPicker) findViewById(R.id.repCountPicker);
         repCountPicker.setMaxValue(100);
         repCountPicker.setMinValue(0);
         repCountPicker.setValue(1);
@@ -129,39 +139,24 @@ public class SetTimerActivity extends Activity {
      * totalTime = warmUp + reps*(work+rest) + coolDown
      */
     private void calculateTotalTime() {
-        final NumberPicker warmUpMinPicker = (NumberPicker) findViewById(R.id.warmUpMinPicker);
+
+
         int warmUpMin = 60 * warmUpMinPicker.getValue();
-
-        final NumberPicker warmUpSecPicker = (NumberPicker) findViewById(R.id.warmUpSecPicker);
         int warmUpSec = warmUpSecPicker.getValue();
-
         int totalWarmUpInSec = warmUpMin + warmUpSec;
 
-        final NumberPicker coolDownMinPicker = (NumberPicker) findViewById(R.id.coolDownMinPicker);
         int coolDownMin = 60 * coolDownMinPicker.getValue();
-
-        final NumberPicker coolDownSecPicker = (NumberPicker) findViewById(R.id.coolDownSecPicker);
         int coolDownSec = coolDownSecPicker.getValue();
-
         int totalCoolDownInSec = coolDownMin + coolDownSec;
 
-        final NumberPicker workMinPicker = (NumberPicker) findViewById(R.id.workMinPicker);
         int workMin = 60 * workMinPicker.getValue();
-
-        final NumberPicker workSecPicker = (NumberPicker) findViewById(R.id.workSecPicker);
         int workSec = workSecPicker.getValue();
-
         int totalWork = workMin + workSec;
 
-        final NumberPicker restMinPicker = (NumberPicker) findViewById(R.id.restMinPicker);
         int restMin = 60 * restMinPicker.getValue();
-
-        final NumberPicker restSecPicker = (NumberPicker) findViewById(R.id.restSecPicker);
         int restSec = restSecPicker.getValue();
-
         int totalRest = restMin + restSec;
 
-        final NumberPicker repCountPicker = (NumberPicker) findViewById(R.id.repCountPicker);
         int numOfReps = repCountPicker.getValue();
 
         int totalTime = totalWarmUpInSec + totalCoolDownInSec + numOfReps * (totalWork + totalRest);
@@ -169,11 +164,17 @@ public class SetTimerActivity extends Activity {
         Integer totalTimeMin = totalTime / 60;
         Integer totalTimeSec = totalTime % 60;
 
-        final TextView totalTextView = (TextView) findViewById(R.id.totalTextView);
+        totalTextView = (TextView) findViewById(R.id.totalTextView);
         totalTextView.setText(String.format("Total: %d : %02d", totalTimeMin, totalTimeSec));
 
     }
 
+    private void resetTimer() {
+        warmUpMinPicker.setValue(0);
+        warmUpSecPicker.setValue(0);
+        coolDownMinPicker.setValue(0);
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

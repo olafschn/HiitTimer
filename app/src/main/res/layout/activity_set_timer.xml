@@ -137,4 +137,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold" />
 
+    <!--TODO add start button-->
+    <!--TODO add save & restore buttons-->
+    <!--TODO add reset button-->
+
 </RelativeLayout>
