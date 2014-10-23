@@ -7,7 +7,13 @@ import android.view.MenuItem;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
-
+/**
+ * Activity to set the HIIT Timer. Once the the intervals are set the user can
+ * launch the CountDownActivity.
+ *
+ * @author olaf
+ * @version "%l%G%"
+ */
 public class SetTimerActivity extends Activity {
 
     @Override
@@ -118,6 +124,10 @@ public class SetTimerActivity extends Activity {
 
     }
 
+    /**
+     * Calculates the total interval time which is
+     * totalTime = warmUp + reps*(work+rest) + coolDown
+     */
     private void calculateTotalTime() {
         final NumberPicker warmUpMinPicker = (NumberPicker) findViewById(R.id.warmUpMinPicker);
         int warmUpMin = 60 * warmUpMinPicker.getValue();
@@ -178,9 +188,7 @@ public class SetTimerActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        if (id == R.id.action_settings) return true;
         return super.onOptionsItemSelected(item);
     }
 }
