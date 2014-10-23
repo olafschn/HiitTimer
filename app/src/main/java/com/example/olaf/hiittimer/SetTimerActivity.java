@@ -58,7 +58,7 @@ public class SetTimerActivity extends Activity {
         restMinPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                calculateTotalTime();;
+                calculateTotalTime();
             }
         });
 
