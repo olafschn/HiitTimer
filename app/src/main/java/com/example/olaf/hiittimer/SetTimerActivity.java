@@ -27,6 +27,7 @@ public class SetTimerActivity extends Activity {
     private NumberPicker repCountPicker;
     private TextView totalTextView;
 
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
