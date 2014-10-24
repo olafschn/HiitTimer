@@ -7,5 +7,9 @@
     <string name="cool_down">Cool Down (mm:ss)</string>
     <string name="work">Work (mm:ss)</string>
     <string name="reps">Reps</string>
+    <string name="reset">Reset</string>
+    <string name="load">Load</string>
+    <string name="go">Go</string>
+    <string name="save">Save</string>
 
 </resources>

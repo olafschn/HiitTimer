@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -26,8 +28,9 @@ public class SetTimerActivity extends Activity {
     private NumberPicker restSecPicker;
     private NumberPicker repCountPicker;
     private TextView totalTextView;
+    private Button resetButton;
 
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -133,6 +136,14 @@ public class SetTimerActivity extends Activity {
             }
         });
 
+        resetButton = (Button) findViewById(R.id.resetButton);
+        resetButton.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetTimer();
+            }
+        });
+
     }
 
     /**
@@ -140,7 +151,6 @@ public class SetTimerActivity extends Activity {
      * totalTime = warmUp + reps*(work+rest) + coolDown
      */
     private void calculateTotalTime() {
-
 
         int warmUpMin = 60 * warmUpMinPicker.getValue();
         int warmUpSec = warmUpSecPicker.getValue();
@@ -174,7 +184,13 @@ public class SetTimerActivity extends Activity {
         warmUpMinPicker.setValue(0);
         warmUpSecPicker.setValue(0);
         coolDownMinPicker.setValue(0);
-
+        coolDownSecPicker.setValue(0);
+        workMinPicker.setValue(0);
+        workSecPicker.setValue(0);
+        restMinPicker.setValue(0);
+        restSecPicker.setValue(0);
+        repCountPicker.setValue(0);
+        totalTextView.setText("Total: 00 : 00");
     }
 
     @Override

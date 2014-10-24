@@ -137,6 +137,15 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textStyle="bold" />
 
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reset"
+        android:id="@+id/resetButton"
+        android:layout_alignBottom="@+id/repCountPicker"
+        android:layout_toEndOf="@+id/workTextView" />
+
     <!--TODO add start button-->
     <!--TODO add save & restore buttons-->
     <!--TODO add reset button-->
